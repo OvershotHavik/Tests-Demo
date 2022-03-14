@@ -7,24 +7,8 @@
 
 import SwiftUI
 
-enum LoginResponse{
-    case success
-    case invalidCredentials
-    
-    var description: String{
-        switch self {
-            
-        case .success:
-            return "Successfully Signed in"
-        case .invalidCredentials:
-            return "Invalid Credentials"
-        }
-    }
-}
-
 
 struct ContentView: View {
-    private let dummyDatabase = [User(username: "Steve", password: "Password")]
     @State var username = ""
     @State var password = ""
     private var validate = ValidationService()
@@ -41,13 +25,17 @@ struct ContentView: View {
                     try validate.validateUsername(username)
                     try validate.validatePassword(password)
                     
-                    validateValidUser()
+                    try validate.validateValidUser(username: username, password: password)
                     
                 } catch let e{
-                    
-                    let error = e as? ValidationError
-                    message = error?.errorDescription ?? ""
-                    shouldShowAlert.toggle()
+                    if let error = e as? ValidationError{
+                        message = error.errorDescription ?? ""
+                        shouldShowAlert.toggle()
+                    }
+                    if let error = e as? LoginResponse{
+                        message = error.description
+                        shouldShowAlert.toggle()
+                    }
                 }
             } label: {
                 Text("Validate")
@@ -62,19 +50,5 @@ struct ContentView: View {
     
     func okTapped(){
         
-    }
-    
-    
-    func validateValidUser(){
-        if let user = dummyDatabase.first(where: { user in
-            user.username == username && user.password == user.password
-        }) {
-            shouldShowAlert.toggle()
-
-            message = LoginResponse.success.description + " as \(user.username)"
-        } else {
-            shouldShowAlert.toggle()
-            message = LoginResponse.invalidCredentials.description
-        }
     }
 }

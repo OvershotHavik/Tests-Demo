@@ -17,6 +17,7 @@
 		B3B2F76627DFBCD300ECBE10 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2F76527DFBCD300ECBE10 /* UserModel.swift */; };
 		B3B2F76827DFBD9600ECBE10 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2F76727DFBD9600ECBE10 /* ValidationService.swift */; };
 		B3B2F76A27DFC90A00ECBE10 /* ValidationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2F76927DFC90A00ECBE10 /* ValidationServiceTest.swift */; };
+		B3B2F76C27DFD64F00ECBE10 /* LoginResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2F76B27DFD64F00ECBE10 /* LoginResponseTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		B3B2F76527DFBCD300ECBE10 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B3B2F76727DFBD9600ECBE10 /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		B3B2F76927DFC90A00ECBE10 /* ValidationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationServiceTest.swift; sourceTree = "<group>"; };
+		B3B2F76B27DFD64F00ECBE10 /* LoginResponseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				B3B2F74C27DFBB7900ECBE10 /* Tests_DemoTests.swift */,
 				B3B2F76927DFC90A00ECBE10 /* ValidationServiceTest.swift */,
+				B3B2F76B27DFD64F00ECBE10 /* LoginResponseTest.swift */,
 			);
 			path = "Tests DemoTests";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			files = (
 				B3B2F76A27DFC90A00ECBE10 /* ValidationServiceTest.swift in Sources */,
 				B3B2F74D27DFBB7900ECBE10 /* Tests_DemoTests.swift in Sources */,
+				B3B2F76C27DFD64F00ECBE10 /* LoginResponseTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

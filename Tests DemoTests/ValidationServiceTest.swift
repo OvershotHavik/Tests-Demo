@@ -32,7 +32,7 @@ class ValidationServiceTest: XCTestCase {
     
     
     func test_username_is_blank() throws {
-        let expectedError = ValidationError.invalidValue
+        let expectedError = ValidationError.invalidUsername
         var error: ValidationError?
         XCTAssertThrowsError(try validation.validateUsername("")){ thrownError in
             error = thrownError as? ValidationError
@@ -72,6 +72,17 @@ class ValidationServiceTest: XCTestCase {
     }
     
     
+    func test_password_is_blank() throws {
+        let expectedError = ValidationError.invalidPassword
+        var error: ValidationError?
+        
+        XCTAssertThrowsError(try validation.validatePassword("")){ thrownError in
+            error = thrownError as? ValidationError
+        }
+        XCTAssertEqual(expectedError, error)
+        XCTAssertEqual(expectedError.errorDescription, error?.errorDescription)
+    }
+    
     func test_password_too_short() throws {
         let expectedError = ValidationError.passwordTooShort
         var error: ValidationError?
@@ -94,5 +105,33 @@ class ValidationServiceTest: XCTestCase {
         }
         XCTAssertEqual(expectedError, error)
         XCTAssertEqual(expectedError.errorDescription, error?.errorDescription)
+    }
+    
+    
+    func test_valid_username_entered() throws {
+        let expectedError = LoginResponse.success
+        var error: LoginResponse?
+        let username = "Steve"
+        let password = "Password"
+        
+        XCTAssertThrowsError(try validation.validateValidUser(username: username, password: password)) {thrownError in
+            error = thrownError as? LoginResponse
+        }
+        XCTAssertEqual(expectedError, error)
+        XCTAssertEqual(expectedError.description, error?.description)
+    }
+    
+    
+    func test_invalid_username_entered() throws {
+        let expectedError = LoginResponse.invalidCredentials
+        var error: LoginResponse?
+        let username = "test"
+        let password = "Password"
+        
+        XCTAssertThrowsError(try validation.validateValidUser(username: username, password: password)) {thrownError in
+            error = thrownError as? LoginResponse
+        }
+        XCTAssertEqual(expectedError, error)
+        XCTAssertEqual(expectedError.description, error?.description)
     }
 }
